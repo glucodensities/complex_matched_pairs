@@ -6,7 +6,7 @@ For more information: PONER LINK DE ARXIV
 This repository contains the source code to reproduce the two simulation scenarios described in the aforementioned paper. 
 For more details about how the simulations are performed, check the following two links: 
 
-1. MCAR Missing Data Scenario: https://rpubs.com/biosensors/mar_simulation
+1. MCAR Missing Data Scenario: https://rpubs.com/biosensors/mcar_simulation 
 
-2. MAR Missing Data Scenario: https://rpubs.com/biosensors/mcar_simulation
+2. MAR Missing Data Scenario: https://rpubs.com/biosensors/mar_simulation
 
