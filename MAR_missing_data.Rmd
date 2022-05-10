@@ -1,0 +1,50 @@
+---
+title: "MAR Missing Data"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Simulation results
+
+Simulations are performed with Willd-bootstrap and 2000 permutation replicas. 
+We analyze the number of rejects with a significance level of 5 percent. 
+In the Wild boostrap the parameter $ln$ is selected as $ln=\sqrt(n)$, where $n$ is the number of data.
+
+In this case, we suppose that $\mathbb{P}(\delta=1 | Z=(Z1,Z2)) = (1 + e^{-1+Z1+Z2})^{-1}$, where $Z_1 = Z_2 \sim \mathcal{N}(0,1)$ are two independent random variables. We fixed $n=300$.
+
+
+```{r warning = FALSE, message=FALSE}
+  source('simular_escenario_2.R')
+
+  ns = 1 # Number of simulations
+  n = 300
+  p = 2
+  rho = 0.2
+  a1 = 0.30
+  b1 = 0.05
+  caso1 = 1
+  caso2 = 1
+  permutaciones = 10
+  
+  prs = c()
+  for (i in 1:ns) {
+    objeto = calcular_pvalor_escenario_2(n, p, a1, b1, rho, caso1, caso2)
+    prs = c(prs, objeto$pv_rbf)
+  }
+
+  df = data.frame()
+  df = rbind(df, c(a1, b1, rho, caso1, caso2, mean(prs <= 0.05)))
+  
+  print(prs)
+  names(df) <- c("a1", "a2", "rho", "case1", "case2", "mean(prs $<$= 0.05)")
+
+```
+
+```{r message=TRUE}
+  print(df)
+```
+
+
